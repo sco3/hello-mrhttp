@@ -3,9 +3,7 @@
 
 
 ./cpu-governor.sh
-server=$(ps -aef | grep -v grep | \
-grep -E -o 'mrhttp' \
-| sort -u)
+server=$(pgrep -f mrhttp >/dev/null && echo 'mrhttp')
 
 echo $(grep 'model name' /proc/cpuinfo | head -n 1 | cut -d: -f2 | xargs)
 echo ===

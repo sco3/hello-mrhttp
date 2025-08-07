@@ -7,7 +7,7 @@ server=$(ps -aef | grep -v grep | \
 grep -E -o 'mrhttp' \
 | sort -u)
 
-echo $(cat /proc/cpuinfo  | grep "model name" | sort -u | awk -F: '{print $2}')
+echo $(grep 'model name' /proc/cpuinfo | head -n 1 | cut -d: -f2 | xargs)
 echo ===
 echo $server 
 echo ---
